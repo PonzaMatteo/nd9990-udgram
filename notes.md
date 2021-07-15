@@ -31,7 +31,7 @@ aws s3 ls
 
 ### Create s3 bucket
 
-- name: `udgram-dev-784161089143`
+- name: `udagram-dev-784161089143`
 
 Add the follwoing policy to the bucket:
 ```json
@@ -43,7 +43,7 @@ Add the follwoing policy to the bucket:
       "Principal":"*",
       "Action":"s3:*",
       "Effect":"Allow",
-      "Resource":"arn:aws:s3:::udgram-dev-784161089143"
+      "Resource":"arn:aws:s3:::udagram-dev-784161089143"
   }
 ]
 }
@@ -82,7 +82,7 @@ We can rely on the default settings of easy-setup. During the development we can
 
 We can connect to the database usin `psql`:
 ```
-psql -h udgram.ctkbnauge1dw.ap-southeast-1.rds.amazonaws.com -U postgres postgres
+psql -h udagram.ctkbnauge1dw.ap-southeast-1.rds.amazonaws.com -U postgres postgres
 ```
 
 ### Set up backend
