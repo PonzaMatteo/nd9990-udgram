@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: udagram-configmap
+data:
+  POSTGRES_HOST: udgram.ctkbnauge1dw.ap-southeast-1.rds.amazonaws.com
+  AWS_BUCKET: udgram-dev-784161089143

@@ -1,0 +1,12 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: nd9990-cluster
+  region: ap-southeast-1
+
+nodeGroups:
+  - name: ng-1
+    instanceType: t2.micro
+    desiredCapacity: 2
+    volumeSize: 20

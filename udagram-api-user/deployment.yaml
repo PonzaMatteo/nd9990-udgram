@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-user
+  labels:
+    app: api-user
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api-user
+  template:
+    metadata:
+      labels:
+        app: api-user
+    spec:
+      containers:
+        - name: api-user
+          image: ponzam/udagram-api-user:v1
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            - name: SPECIAL_LEVEL_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: udagram-configmap
+                  key: POSTGRES_HOST
+            - name: SPECIAL_LEVEL_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: udagram-configmap
+                  key: AWS_BUCKET
+            - name: POSTGRES_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: udagram-secrets
+                  key: POSTGRES_USERNAME
+            - name: POSTGRES_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: udagram-secrets
+                  key: POSTGRES_USERNAME
+      restartPolicy: Always
+  
+

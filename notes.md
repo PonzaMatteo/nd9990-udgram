@@ -127,3 +127,25 @@ For solving the issues I:
 
 After that it started correctly. 
 
+## Setup CI
+
+Quite a few headaches with the CI and the names of the images, still ongoing. 
+One of the issues was that I did not escape the password!
+
+## Setup Cluster
+
+For setup the cluster easily we can use [eksctl](https://eksctl.io/usage/creating-and-managing-clusters/)
+
+We can run:
+```
+eksctl create cluster -f cluster.yaml
+```
+
+For creating the cluster according to config. 
+
+## Deploy applications
+
+1. Add the secrets in base 64 to `aws-secret.yaml`
+2. Add the postgres secrets to `env-secret.yaml`
+3. Add one deployment file for each service.
+4. Add one service file for each service. 
