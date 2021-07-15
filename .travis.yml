@@ -2,17 +2,19 @@ language: node_js
 node_js:
   - 13
 
+env: 
+  - VERSION=v1
 services:
   - docker
 
 script:
   - docker-compose -f docker-compose-build.yaml build --parallel
-  - docker tag udagram-api-feed ponzam/udagram-api-feed:v1
-  - docker tag udagram-api-user ponzam/udagram-api-user:v1
-  - docker tag udagram-frontend ponzam/udagram-frontend:v1
-  - docker tag reverseproxy ponzam/reverseproxy:v1
+  - docker tag udagram-api-feed ponzam/udagram-api-feed:$VERSION
+  - docker tag udagram-api-user ponzam/udagram-api-user:$VERSION
+  - docker tag udagram-frontend ponzam/udagram-frontend:$VERSION
+  - docker tag reverseproxy ponzam/reverseproxy:$VERSION
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push ponzam/udagram-api-feed:v1
-  - docker push ponzam/udagram-api-user:v1
-  - docker push ponzam/udagram-frontend:v1
-  - docker push ponzam/reverseproxy:v1
+  - docker push ponzam/udagram-api-feed:$VERSION
+  - docker push ponzam/udagram-api-user:$VERSION
+  - docker push ponzam/udagram-frontend:$VERSION
+  - docker push ponzam/reverseproxy:$VERSION
