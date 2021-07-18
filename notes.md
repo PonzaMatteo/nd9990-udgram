@@ -177,7 +177,7 @@ kubectl apply -f udagram-frontend/deployment.yaml
 
 In order to setup HPA can run:
 ```
-kubectl autoscale deployment udagram-api-feed --cpu-percent=50 --min=1 --max=10
-kubectl autoscale deployment udagram-api-user --cpu-percent=50 --min=1 --max=10
-kubectl autoscale deployment reverseproxy --cpu-percent=50 --min=1 --max=10
+kubectl autoscale deployment api-feed --cpu-percent=50 --min=1 --max=5
+kubectl autoscale deployment api-user --cpu-percent=50 --min=1 --max=5
+kubectl autoscale deployment reverseproxy --cpu-percent=50 --min=1 --max=5
 ```
