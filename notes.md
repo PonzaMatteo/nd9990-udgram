@@ -149,3 +149,35 @@ For creating the cluster according to config.
 2. Add the postgres secrets to `env-secret.yaml`
 3. Add one deployment file for each service.
 4. Add one service file for each service. 
+
+To double check the config and the values we can run:
+```
+kubectl describe configmap/udagram-configmap
+```
+
+Since I am having problems, and I don't fully understand what's going on (there may be many reasons for not working) I decided to try and setup my local mini-kube cluster. 
+
+### Playing with `minikube`
+
+https://minikube.sigs.k8s.io/docs/start/
+
+Having the dashboard that shorten the feedback loop is great.
+
+List of commands to run:
+```
+kubectl apply -f env-secret.yaml
+kubectl apply -f env-configmap.yaml
+kubectl apply -f udagram-api-feed/deployment.yaml
+kubectl apply -f udagram-api-user/deployment.yaml
+kubectl apply -f udagram-api-feed/service.yaml
+kubectl apply -f udagram-api-feed/service.yaml
+kubectl apply -f reverseproxy/deployment.yaml
+kubectl apply -f udagram-frontend/deployment.yaml
+```
+
+In order to setup HPA can run:
+```
+kubectl autoscale deployment udagram-api-feed --cpu-percent=50 --min=1 --max=10
+kubectl autoscale deployment udagram-api-user --cpu-percent=50 --min=1 --max=10
+kubectl autoscale deployment reverseproxy --cpu-percent=50 --min=1 --max=10
+```
